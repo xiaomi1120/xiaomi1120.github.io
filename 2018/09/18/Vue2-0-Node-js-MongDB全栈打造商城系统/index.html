@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="课程目录第01章 课程介绍01-01 课程-导学 Vue框架对比Vue框架的对比  Angular提供的更多是一整套解决方案，后者更像是一个生态 Vue和React目前都使用了Virtual DOM    Vue   模板和渲染函数的弹性选择 简单的语法及项目创建 更快的渲染速度和更小的体积   React （facebook团队）   更适合用于大型应用和更好的可测试性 同时适用于Web端和原生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2.0+Node.js+MongDB全栈打造商城系统">
+<meta property="og:url" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/index.html">
+<meta property="og:site_name" content="Web前端架构">
+<meta property="og:description" content="课程目录第01章 课程介绍01-01 课程-导学 Vue框架对比Vue框架的对比  Angular提供的更多是一整套解决方案，后者更像是一个生态 Vue和React目前都使用了Virtual DOM    Vue   模板和渲染函数的弹性选择 简单的语法及项目创建 更快的渲染速度和更小的体积   React （facebook团队）   更适合用于大型应用和更好的可测试性 同时适用于Web端和原生">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/Vue和React运行速度对比.png">
+<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/vue概况以及核心思想.png">
+<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/MVVM数据自动同步.png">
+<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/组件化.png">
+<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/组件树.png">
+<meta property="og:updated_time" content="2018-11-01T12:10:44.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue2.0+Node.js+MongDB全栈打造商城系统">
+<meta name="twitter:description" content="课程目录第01章 课程介绍01-01 课程-导学 Vue框架对比Vue框架的对比  Angular提供的更多是一整套解决方案，后者更像是一个生态 Vue和React目前都使用了Virtual DOM    Vue   模板和渲染函数的弹性选择 简单的语法及项目创建 更快的渲染速度和更小的体积   React （facebook团队）   更适合用于大型应用和更好的可测试性 同时适用于Web端和原生">
+<meta name="twitter:image" content="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/Vue和React运行速度对比.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/">
+
+
+
+
+
+  <title>Vue2.0+Node.js+MongDB全栈打造商城系统 | Web前端架构</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Web前端架构</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alimi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Web前端架构">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue2.0+Node.js+MongDB全栈打造商城系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-18T17:08:49+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="课程目录"><a href="#课程目录" class="headerlink" title="课程目录"></a>课程目录</h1><h2 id="第01章-课程介绍"><a href="#第01章-课程介绍" class="headerlink" title="第01章 课程介绍"></a>第01章 课程介绍</h2><h3 id="01-01-课程-导学"><a href="#01-01-课程-导学" class="headerlink" title="01-01 课程-导学"></a>01-01 课程-导学</h3><hr>
+<h4 id="Vue框架对比"><a href="#Vue框架对比" class="headerlink" title="Vue框架对比"></a>Vue框架对比</h4><p>Vue框架的对比</p>
+<ul>
+<li>Angular提供的更多是一整套解决方案，后者更像是一个生态</li>
+<li>Vue和React目前都使用了Virtual DOM</li>
+</ul>
+<p><img src="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/Vue和React运行速度对比.png" alt="Vue和React运行速度对比"></p>
+<blockquote>
+<p>Vue</p>
+</blockquote>
+<ul>
+<li>模板和渲染函数的弹性选择</li>
+<li>简单的语法及项目创建</li>
+<li>更快的渲染速度和更小的体积</li>
+</ul>
+<blockquote>
+<p>React （facebook团队）</p>
+</blockquote>
+<ul>
+<li>更适合用于大型应用和更好的可测试性</li>
+<li>同时适用于Web端和原生App</li>
+<li>更大的生态圈带来的更多支持和工具</li>
+</ul>
+<p>Vue和React相同点</p>
+<ul>
+<li>利用虚拟DOM实现快速渲染</li>
+<li>轻量级</li>
+<li>响应式组件</li>
+<li>服务器端渲染</li>
+<li>易于集成路由工具，打包工具以及状态管理工具</li>
+<li>优秀是支持和社区</li>
+</ul>
+<h4 id="01-02-前端框架回顾"><a href="#01-02-前端框架回顾" class="headerlink" title="01-02 前端框架回顾"></a>01-02 前端框架回顾</h4><p>模块化的开发框架</p>
+<ul>
+<li>require.js 减轻文件加载，按模块化划分式结构更加清晰</li>
+<li>jquery DOM操作，ajax,jsp,丰富的函数库，方便操作</li>
+</ul>
+<h4 id="01-03-vue概况以及核心思想"><a href="#01-03-vue概况以及核心思想" class="headerlink" title="01-03 vue概况以及核心思想"></a>01-03 vue概况以及核心思想</h4><ul>
+<li>2013年底作为尤雨溪个人实验项目开发</li>
+<li>2014年2月份公开发布</li>
+<li>2014年11月发布0.11版本</li>
+<li>截至目前经历的版本 vue0.11,vue1.0,vue2.0</li>
+<li>发布到github，得到了更大的影响力</li>
+</ul>
+<blockquote>
+<p>Vue本身并不是一个框架<br>Vue结合周边的生态构成一个更灵活的、渐进式的框架</p>
+</blockquote>
+<p><img src="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/vue概况以及核心思想.png" alt="vue概况以及核心思想"></p>
+<blockquote>
+<p>核心思想</p>
+</blockquote>
+<ul>
+<li>数据驱动：DOM操作数据层面</li>
+<li>组件化</li>
+</ul>
+<p>通过MVVM的数据绑定实现自动同步</p>
+<p><img src="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/MVVM数据自动同步.png" alt="MVVM数据自动同步"></p>
+<p>Vue组件化</p>
+<p><img src="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/组件化.png" alt="Vue组件化"></p>
+<p>Vue组件树</p>
+<p><img src="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/组件树.png" alt="Vue组件树"></p>
+<p>Vue如何实现双向数据绑定？</p>
+<ul>
+<li>Object.defineProperty()函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> id=<span class="string">"userName"</span>&gt;</span><br><span class="line"> &lt;span id=<span class="string">"userNameText"</span>&gt;&lt;/span&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   <span class="keyword">var</span> obj=&#123;</span><br><span class="line">     pwd:<span class="string">'123456'</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="built_in">Object</span>.defineProperty(obj,<span class="string">"username"</span>,&#123;</span><br><span class="line">     get:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     &#125;,</span><br><span class="line">     set:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userNameText'</span>).innerText=val;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userName'</span>).value=val;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="built_in">document</span>.getElementById(<span class="string">"userName"</span>).addEventListener(<span class="string">'keyup'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     obj.username=event.target.value</span><br><span class="line">   &#125;)</span><br><span class="line"> &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="01-04-vue框架优缺点对比"><a href="#01-04-vue框架优缺点对比" class="headerlink" title="01-04 vue框架优缺点对比"></a>01-04 vue框架优缺点对比</h4><p>前端：vue.js,axios,vuex,util,公共组件，vue-cli,webpack<br>后端：Node+Express的后端接口开发<br>数据库：MongoDB等数据库知识<br>Vue+Node部署到生产环境</p>
+<h2 id="第02章-Vue基础"><a href="#第02章-Vue基础" class="headerlink" title="第02章 Vue基础"></a>第02章 Vue基础</h2><h3 id="02-01-nodejs和npm的安装和环境搭建"><a href="#02-01-nodejs和npm的安装和环境搭建" class="headerlink" title="02-01 nodejs和npm的安装和环境搭建"></a>02-01 nodejs和npm的安装和环境搭建</h3><h3 id="02-02-vue环境搭建以及vue-cli使用"><a href="#02-02-vue环境搭建以及vue-cli使用" class="headerlink" title="02-02 vue环境搭建以及vue-cli使用"></a>02-02 vue环境搭建以及vue-cli使用</h3><p>Vue多页面应用文件引用</p>
+<ul>
+<li>官网拷贝：</li>
+<li>npm 安装</li>
+</ul>
+<p>vue-cli构建SPA应用</p>
+<ul>
+<li>npm install -g vue-cli</li>
+<li>vue init webpack-simple demo</li>
+<li>vue init webpack</li>
+</ul>
+<h3 id="02-03-vue配置介绍"><a href="#02-03-vue配置介绍" class="headerlink" title="02-03 vue配置介绍"></a>02-03 vue配置介绍</h3><h3 id="02-04-vue配置"><a href="#02-04-vue配置" class="headerlink" title="02-04 vue配置"></a>02-04 vue配置</h3><h3 id="02-05-vue基础语法-mp4"><a href="#02-05-vue基础语法-mp4" class="headerlink" title="02-05 vue基础语法.mp4"></a>02-05 vue基础语法.mp4</h3><h2 id="第03章-Vue-router"><a href="#第03章-Vue-router" class="headerlink" title="第03章 Vue-router"></a>第03章 Vue-router</h2><h3 id="03-01-路由基础介绍-mp4"><a href="#03-01-路由基础介绍-mp4" class="headerlink" title="03-01 路由基础介绍.mp4"></a>03-01 路由基础介绍.mp4</h3><h3 id="03-02-动态路由匹配-mp4"><a href="#03-02-动态路由匹配-mp4" class="headerlink" title="03-02 动态路由匹配.mp4"></a>03-02 动态路由匹配.mp4</h3><h3 id="03-03-嵌套路由-mp4"><a href="#03-03-嵌套路由-mp4" class="headerlink" title="03-03 嵌套路由.mp4"></a>03-03 嵌套路由.mp4</h3><h3 id="03-04-编程式路由-mp4"><a href="#03-04-编程式路由-mp4" class="headerlink" title="03-04 编程式路由.mp4"></a>03-04 编程式路由.mp4</h3><h3 id="03-05-命名路由和命名视图-mp4"><a href="#03-05-命名路由和命名视图-mp4" class="headerlink" title="03-05 命名路由和命名视图.mp4"></a>03-05 命名路由和命名视图.mp4</h3><h2 id="第04章-Vue-resource-Axios"><a href="#第04章-Vue-resource-Axios" class="headerlink" title="第04章 Vue-resource/Axios"></a>第04章 Vue-resource/Axios</h2><h3 id="04-01-Vue-Resource使用（上）-mp4"><a href="#04-01-Vue-Resource使用（上）-mp4" class="headerlink" title="04-01 Vue-Resource使用（上）.mp4"></a>04-01 Vue-Resource使用（上）.mp4</h3><h3 id="04-02-Vue-Resource使用（下）-mp4"><a href="#04-02-Vue-Resource使用（下）-mp4" class="headerlink" title="04-02 Vue-Resource使用（下）.mp4"></a>04-02 Vue-Resource使用（下）.mp4</h3><h3 id="04-03-axios基础介绍-mp4"><a href="#04-03-axios基础介绍-mp4" class="headerlink" title="04-03 axios基础介绍.mp4"></a>04-03 axios基础介绍.mp4</h3><h2 id="第05章-ES6常用语法"><a href="#第05章-ES6常用语法" class="headerlink" title="第05章 ES6常用语法"></a>第05章 ES6常用语法</h2><h3 id="05-01-ES6简介-mp4"><a href="#05-01-ES6简介-mp4" class="headerlink" title="05-01 ES6简介.mp4"></a>05-01 ES6简介.mp4</h3><h3 id="05-02-ES6常用命令-mp4"><a href="#05-02-ES6常用命令-mp4" class="headerlink" title="05-02 ES6常用命令.mp4"></a>05-02 ES6常用命令.mp4</h3><h3 id="05-03-拓展参数讲解-mp4"><a href="#05-03-拓展参数讲解-mp4" class="headerlink" title="05-03 拓展参数讲解.mp4"></a>05-03 拓展参数讲解.mp4</h3><h3 id="05-04-Promise讲解-mp4"><a href="#05-04-Promise讲解-mp4" class="headerlink" title="05-04 Promise讲解.mp4"></a>05-04 Promise讲解.mp4</h3><h3 id="05-05-ES6模块化开发讲解-mp4"><a href="#05-05-ES6模块化开发讲解-mp4" class="headerlink" title="05-05 ES6模块化开发讲解.mp4"></a>05-05 ES6模块化开发讲解.mp4</h3><h3 id="05-06-AMD、CMD、CommonJS和ES6差异-mp4"><a href="#05-06-AMD、CMD、CommonJS和ES6差异-mp4" class="headerlink" title="05-06 AMD、CMD、CommonJS和ES6差异.mp4"></a>05-06 AMD、CMD、CommonJS和ES6差异.mp4</h3><h2 id="第06章-商品列表模块实现"><a href="#第06章-商品列表模块实现" class="headerlink" title="第06章 商品列表模块实现"></a>第06章 商品列表模块实现</h2><h3 id="06-01-商品列表组件拆分-mp4"><a href="#06-01-商品列表组件拆分-mp4" class="headerlink" title="06-01 商品列表组件拆分.mp4"></a>06-01 商品列表组件拆分.mp4</h3><h3 id="06-02-商品列表数据渲染实现-mp4"><a href="#06-02-商品列表数据渲染实现-mp4" class="headerlink" title="06-02 商品列表数据渲染实现.mp4"></a>06-02 商品列表数据渲染实现.mp4</h3><h3 id="06-03-实现图片懒加载-mp4"><a href="#06-03-实现图片懒加载-mp4" class="headerlink" title="06-03 实现图片懒加载.mp4"></a>06-03 实现图片懒加载.mp4</h3><h2 id="第07章-Node-js基础"><a href="#第07章-Node-js基础" class="headerlink" title="第07章 Node.js基础"></a>第07章 Node.js基础</h2><h3 id="07-01-Linux环境下配置Node环境-mp4"><a href="#07-01-Linux环境下配置Node环境-mp4" class="headerlink" title="07-01 Linux环境下配置Node环境.mp4"></a>07-01 Linux环境下配置Node环境.mp4</h3><h3 id="07-02-创建http-Server容器-mp4"><a href="#07-02-创建http-Server容器-mp4" class="headerlink" title="07-02 创建http Server容器.mp4"></a>07-02 创建http Server容器.mp4</h3><h3 id="07-03-通过node加载静态页面-mp4"><a href="#07-03-通过node加载静态页面-mp4" class="headerlink" title="07-03 通过node加载静态页面.mp4"></a>07-03 通过node加载静态页面.mp4</h3><h3 id="07-04-搭建基于Express框架的运行环境-mp4"><a href="#07-04-搭建基于Express框架的运行环境-mp4" class="headerlink" title="07-04 搭建基于Express框架的运行环境.mp4"></a>07-04 搭建基于Express框架的运行环境.mp4</h3><h2 id="第08章-MongoDB介绍"><a href="#第08章-MongoDB介绍" class="headerlink" title="第08章 MongoDB介绍"></a>第08章 MongoDB介绍</h2><h3 id="08-01-window平台下MongoDB的安装和环境搭建-mp4"><a href="#08-01-window平台下MongoDB的安装和环境搭建-mp4" class="headerlink" title="08-01 window平台下MongoDB的安装和环境搭建.mp4"></a>08-01 window平台下MongoDB的安装和环境搭建.mp4</h3><h3 id="08-02-Linux平台下安装配置MongoDB-mp4"><a href="#08-02-Linux平台下安装配置MongoDB-mp4" class="headerlink" title="08-02 Linux平台下安装配置MongoDB.mp4"></a>08-02 Linux平台下安装配置MongoDB.mp4</h3><h3 id="08-03-给MongoDB创建用户-mp4"><a href="#08-03-给MongoDB创建用户-mp4" class="headerlink" title="08-03 给MongoDB创建用户.mp4"></a>08-03 给MongoDB创建用户.mp4</h3><h3 id="08-04-MongoDB基本语法-mp4"><a href="#08-04-MongoDB基本语法-mp4" class="headerlink" title="08-04 MongoDB基本语法.mp4"></a>08-04 MongoDB基本语法.mp4</h3><h3 id="08-05-表数据设计和插入-mp4"><a href="#08-05-表数据设计和插入-mp4" class="headerlink" title="08-05 表数据设计和插入.mp4"></a>08-05 表数据设计和插入.mp4</h3><h2 id="第09章-基于Node-js开发商品列表接口"><a href="#第09章-基于Node-js开发商品列表接口" class="headerlink" title="第09章 基于Node.js开发商品列表接口"></a>第09章 基于Node.js开发商品列表接口</h2><h3 id="09-01-Node的启动和调试方式-mp4"><a href="#09-01-Node的启动和调试方式-mp4" class="headerlink" title="09-01 Node的启动和调试方式.mp4"></a>09-01 Node的启动和调试方式.mp4</h3><h3 id="09-02-基于Express实现商品列表查询接口-mp4"><a href="#09-02-基于Express实现商品列表查询接口-mp4" class="headerlink" title="09-02 基于Express实现商品列表查询接口.mp4"></a>09-02 基于Express实现商品列表查询接口.mp4</h3><h3 id="09-03-商品列表分页和排序功能实现-上-mp4"><a href="#09-03-商品列表分页和排序功能实现-上-mp4" class="headerlink" title="09-03 商品列表分页和排序功能实现(上).mp4"></a>09-03 商品列表分页和排序功能实现(上).mp4</h3><h3 id="09-04-商品列表分页和排序功能实现（下）-mp4"><a href="#09-04-商品列表分页和排序功能实现（下）-mp4" class="headerlink" title="09-04 商品列表分页和排序功能实现（下）.mp4"></a>09-04 商品列表分页和排序功能实现（下）.mp4</h3><h3 id="09-05-价格过滤功能实现-mp4"><a href="#09-05-价格过滤功能实现-mp4" class="headerlink" title="09-05 价格过滤功能实现.mp4"></a>09-05 价格过滤功能实现.mp4</h3><h3 id="09-06-加入购物车功能实现-mp4"><a href="#09-06-加入购物车功能实现-mp4" class="headerlink" title="09-06 加入购物车功能实现.mp4"></a>09-06 加入购物车功能实现.mp4</h3><h2 id="第10章-登录模块实现"><a href="#第10章-登录模块实现" class="headerlink" title="第10章 登录模块实现"></a>第10章 登录模块实现</h2><h3 id="10-01-登录功能实现-mp4"><a href="#10-01-登录功能实现-mp4" class="headerlink" title="10-01 登录功能实现.mp4"></a>10-01 登录功能实现.mp4</h3><h3 id="10-02-登出功能实现-mp4"><a href="#10-02-登出功能实现-mp4" class="headerlink" title="10-02 登出功能实现.mp4"></a>10-02 登出功能实现.mp4</h3><h3 id="10-03-登录拦截-mp4"><a href="#10-03-登录拦截-mp4" class="headerlink" title="10-03 登录拦截.mp4"></a>10-03 登录拦截.mp4</h3><h3 id="10-04-全局模态框组件实现-mp4"><a href="#10-04-全局模态框组件实现-mp4" class="headerlink" title="10-04 全局模态框组件实现.mp4"></a>10-04 全局模态框组件实现.mp4</h3><h2 id="第11章-购物车模块实现"><a href="#第11章-购物车模块实现" class="headerlink" title="第11章 购物车模块实现"></a>第11章 购物车模块实现</h2><h3 id="11-01-购物车列表功能实现-mp4"><a href="#11-01-购物车列表功能实现-mp4" class="headerlink" title="11-01 购物车列表功能实现.mp4"></a>11-01 购物车列表功能实现.mp4</h3><h3 id="11-02-商品删除功能实现-mp4"><a href="#11-02-商品删除功能实现-mp4" class="headerlink" title="11-02 商品删除功能实现.mp4"></a>11-02 商品删除功能实现.mp4</h3><h3 id="11-03-商品修改功能实现-mp4"><a href="#11-03-商品修改功能实现-mp4" class="headerlink" title="11-03 商品修改功能实现.mp4"></a>11-03 商品修改功能实现.mp4</h3><h3 id="11-04-购物车全选和商品实时计算功能实现-mp4"><a href="#11-04-购物车全选和商品实时计算功能实现-mp4" class="headerlink" title="11-04 购物车全选和商品实时计算功能实现.mp4"></a>11-04 购物车全选和商品实时计算功能实现.mp4</h3><h2 id="第12章-地址模块实现"><a href="#第12章-地址模块实现" class="headerlink" title="第12章 地址模块实现"></a>第12章 地址模块实现</h2><h3 id="12-01-地址列表渲染实现-上-mp4"><a href="#12-01-地址列表渲染实现-上-mp4" class="headerlink" title="12-01 地址列表渲染实现 (上).mp4"></a>12-01 地址列表渲染实现 (上).mp4</h3><h3 id="12-02-地址列表渲染功能实现（下）-mp4"><a href="#12-02-地址列表渲染功能实现（下）-mp4" class="headerlink" title="12-02 地址列表渲染功能实现（下）.mp4"></a>12-02 地址列表渲染功能实现（下）.mp4</h3><h3 id="12-03-地址列表切换和展开功能实现-mp4"><a href="#12-03-地址列表切换和展开功能实现-mp4" class="headerlink" title="12-03 地址列表切换和展开功能实现.mp4"></a>12-03 地址列表切换和展开功能实现.mp4</h3><h3 id="12-04-地址设置默认功能实现-mp4"><a href="#12-04-地址设置默认功能实现-mp4" class="headerlink" title="12-04 地址设置默认功能实现.mp4"></a>12-04 地址设置默认功能实现.mp4</h3><h3 id="12-05-地址删除功能实现-mp4"><a href="#12-05-地址删除功能实现-mp4" class="headerlink" title="12-05 地址删除功能实现.mp4"></a>12-05 地址删除功能实现.mp4</h3><h2 id="第13章-订单确认模块实现"><a href="#第13章-订单确认模块实现" class="headerlink" title="第13章 订单确认模块实现"></a>第13章 订单确认模块实现</h2><h3 id="13-01-订单确认列表渲染功能实现-mp4"><a href="#13-01-订单确认列表渲染功能实现-mp4" class="headerlink" title="13-01 订单确认列表渲染功能实现.mp4"></a>13-01 订单确认列表渲染功能实现.mp4</h3><h3 id="13-02-创建订单功能实现-mp4"><a href="#13-02-创建订单功能实现-mp4" class="headerlink" title="13-02 创建订单功能实现.mp4"></a>13-02 创建订单功能实现.mp4</h3><h2 id="第14章-订单成功模块实现"><a href="#第14章-订单成功模块实现" class="headerlink" title="第14章 订单成功模块实现"></a>第14章 订单成功模块实现</h2><h3 id="14-01-订单成功页面功能实现-mp4"><a href="#14-01-订单成功页面功能实现-mp4" class="headerlink" title="14-01 订单成功页面功能实现.mp4"></a>14-01 订单成功页面功能实现.mp4</h3><h2 id="第15章-基于Vuex改造登录和购物车数量功能"><a href="#第15章-基于Vuex改造登录和购物车数量功能" class="headerlink" title="第15章 基于Vuex改造登录和购物车数量功能"></a>第15章 基于Vuex改造登录和购物车数量功能</h2><h3 id="15-01-Vuex基本介绍-mp4"><a href="#15-01-Vuex基本介绍-mp4" class="headerlink" title="15-01 Vuex基本介绍.mp4"></a>15-01 Vuex基本介绍.mp4</h3><h3 id="15-02-Vuex的语法讲解-mp4"><a href="#15-02-Vuex的语法讲解-mp4" class="headerlink" title="15-02 Vuex的语法讲解.mp4"></a>15-02 Vuex的语法讲解.mp4</h3><h3 id="15-03-通过Vuex实现登录和购物车数量（上）-mp4"><a href="#15-03-通过Vuex实现登录和购物车数量（上）-mp4" class="headerlink" title="15-03 通过Vuex实现登录和购物车数量（上）.mp4"></a>15-03 通过Vuex实现登录和购物车数量（上）.mp4</h3><h3 id="15-04-通过Vuex实现登录和购物车数量（下）-mp4"><a href="#15-04-通过Vuex实现登录和购物车数量（下）-mp4" class="headerlink" title="15-04 通过Vuex实现登录和购物车数量（下）.mp4"></a>15-04 通过Vuex实现登录和购物车数量（下）.mp4</h3><h2 id="第16章-Webpack使用"><a href="#第16章-Webpack使用" class="headerlink" title="第16章 Webpack使用"></a>第16章 Webpack使用</h2><h3 id="16-01-webpack基础介绍-mp4"><a href="#16-01-webpack基础介绍-mp4" class="headerlink" title="16-01 webpack基础介绍.mp4"></a>16-01 webpack基础介绍.mp4</h3><h3 id="16-02-插件静态部分实现-mp4"><a href="#16-02-插件静态部分实现-mp4" class="headerlink" title="16-02 插件静态部分实现.mp4"></a>16-02 插件静态部分实现.mp4</h3><h3 id="16-03-插件功能实现-mp4"><a href="#16-03-插件功能实现-mp4" class="headerlink" title="16-03 插件功能实现.mp4"></a>16-03 插件功能实现.mp4</h3><h3 id="16-04-webpack打包功能实现（上）-mp4"><a href="#16-04-webpack打包功能实现（上）-mp4" class="headerlink" title="16-04 webpack打包功能实现（上）.mp4"></a>16-04 webpack打包功能实现（上）.mp4</h3><h3 id="16-05-webpack打包功能实现（下）-mp4"><a href="#16-05-webpack打包功能实现（下）-mp4" class="headerlink" title="16-05 webpack打包功能实现（下）.mp4"></a>16-05 webpack打包功能实现（下）.mp4</h3><h3 id="16-06-npm插件发布-mp4"><a href="#16-06-npm插件发布-mp4" class="headerlink" title="16-06 npm插件发布.mp4"></a>16-06 npm插件发布.mp4</h3><h3 id="16-07-webpack多页面构建-上-mp4"><a href="#16-07-webpack多页面构建-上-mp4" class="headerlink" title="16-07 webpack多页面构建(上).mp4"></a>16-07 webpack多页面构建(上).mp4</h3><h3 id="16-08-webpack多页面构建（下）-mp4"><a href="#16-08-webpack多页面构建（下）-mp4" class="headerlink" title="16-08 webpack多页面构建（下）.mp4"></a>16-08 webpack多页面构建（下）.mp4</h3><h3 id="16-09-webpack多页面构建-第三方库-mp4"><a href="#16-09-webpack多页面构建-第三方库-mp4" class="headerlink" title="16-09 webpack多页面构建-第三方库.mp4"></a>16-09 webpack多页面构建-第三方库.mp4</h3><h3 id="16-10-webpack多页面构建-抽取公共模块-mp4"><a href="#16-10-webpack多页面构建-抽取公共模块-mp4" class="headerlink" title="16-10 webpack多页面构建-抽取公共模块.mp4"></a>16-10 webpack多页面构建-抽取公共模块.mp4</h3><h2 id="第17章-线上部署"><a href="#第17章-线上部署" class="headerlink" title="第17章 线上部署"></a>第17章 线上部署</h2><h3 id="17-01-线上部署（上）-mp4"><a href="#17-01-线上部署（上）-mp4" class="headerlink" title="17-01 线上部署（上）.mp4"></a>17-01 线上部署（上）.mp4</h3><h3 id="17-02-线上部署（中）-mp4"><a href="#17-02-线上部署（中）-mp4" class="headerlink" title="17-02 线上部署（中）.mp4"></a>17-02 线上部署（中）.mp4</h3><h3 id="17-03-线上部署（下）-mp4"><a href="#17-03-线上部署（下）-mp4" class="headerlink" title="17-03 线上部署（下）.mp4"></a>17-03 线上部署（下）.mp4</h3><h2 id="第18章-课程总结"><a href="#第18章-课程总结" class="headerlink" title="第18章 课程总结"></a>第18章 课程总结</h2><h3 id="18-01-课程总结-mp4"><a href="#18-01-课程总结-mp4" class="headerlink" title="18-01 课程总结.mp4"></a>18-01 课程总结.mp4</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/18/js获取字符串的字节长度/" rel="next" title="js获取字符串的字节长度">
+                <i class="fa fa-chevron-left"></i> js获取字符串的字节长度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/19/深入理解vue-SPD前端构建思想/" rel="prev" title="深入理解vue&SPD前端构建思想">
+                深入理解vue&SPD前端构建思想 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Alimi</p>
+              <p class="site-description motion-element" itemprop="description">共享前端技术,记录生活空间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#课程目录"><span class="nav-number">1.</span> <span class="nav-text">课程目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第01章-课程介绍"><span class="nav-number">1.1.</span> <span class="nav-text">第01章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-01-课程-导学"><span class="nav-number">1.1.1.</span> <span class="nav-text">01-01 课程-导学</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue框架对比"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Vue框架对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#01-02-前端框架回顾"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">01-02 前端框架回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#01-03-vue概况以及核心思想"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">01-03 vue概况以及核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#01-04-vue框架优缺点对比"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">01-04 vue框架优缺点对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第02章-Vue基础"><span class="nav-number">1.2.</span> <span class="nav-text">第02章 Vue基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-01-nodejs和npm的安装和环境搭建"><span class="nav-number">1.2.1.</span> <span class="nav-text">02-01 nodejs和npm的安装和环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-02-vue环境搭建以及vue-cli使用"><span class="nav-number">1.2.2.</span> <span class="nav-text">02-02 vue环境搭建以及vue-cli使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-03-vue配置介绍"><span class="nav-number">1.2.3.</span> <span class="nav-text">02-03 vue配置介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-04-vue配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">02-04 vue配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-05-vue基础语法-mp4"><span class="nav-number">1.2.5.</span> <span class="nav-text">02-05 vue基础语法.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第03章-Vue-router"><span class="nav-number">1.3.</span> <span class="nav-text">第03章 Vue-router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#03-01-路由基础介绍-mp4"><span class="nav-number">1.3.1.</span> <span class="nav-text">03-01 路由基础介绍.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-动态路由匹配-mp4"><span class="nav-number">1.3.2.</span> <span class="nav-text">03-02 动态路由匹配.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-03-嵌套路由-mp4"><span class="nav-number">1.3.3.</span> <span class="nav-text">03-03 嵌套路由.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-04-编程式路由-mp4"><span class="nav-number">1.3.4.</span> <span class="nav-text">03-04 编程式路由.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-命名路由和命名视图-mp4"><span class="nav-number">1.3.5.</span> <span class="nav-text">03-05 命名路由和命名视图.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第04章-Vue-resource-Axios"><span class="nav-number">1.4.</span> <span class="nav-text">第04章 Vue-resource/Axios</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#04-01-Vue-Resource使用（上）-mp4"><span class="nav-number">1.4.1.</span> <span class="nav-text">04-01 Vue-Resource使用（上）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-02-Vue-Resource使用（下）-mp4"><span class="nav-number">1.4.2.</span> <span class="nav-text">04-02 Vue-Resource使用（下）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-03-axios基础介绍-mp4"><span class="nav-number">1.4.3.</span> <span class="nav-text">04-03 axios基础介绍.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第05章-ES6常用语法"><span class="nav-number">1.5.</span> <span class="nav-text">第05章 ES6常用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#05-01-ES6简介-mp4"><span class="nav-number">1.5.1.</span> <span class="nav-text">05-01 ES6简介.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-02-ES6常用命令-mp4"><span class="nav-number">1.5.2.</span> <span class="nav-text">05-02 ES6常用命令.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-03-拓展参数讲解-mp4"><span class="nav-number">1.5.3.</span> <span class="nav-text">05-03 拓展参数讲解.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-04-Promise讲解-mp4"><span class="nav-number">1.5.4.</span> <span class="nav-text">05-04 Promise讲解.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-05-ES6模块化开发讲解-mp4"><span class="nav-number">1.5.5.</span> <span class="nav-text">05-05 ES6模块化开发讲解.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-06-AMD、CMD、CommonJS和ES6差异-mp4"><span class="nav-number">1.5.6.</span> <span class="nav-text">05-06 AMD、CMD、CommonJS和ES6差异.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第06章-商品列表模块实现"><span class="nav-number">1.6.</span> <span class="nav-text">第06章 商品列表模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#06-01-商品列表组件拆分-mp4"><span class="nav-number">1.6.1.</span> <span class="nav-text">06-01 商品列表组件拆分.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-02-商品列表数据渲染实现-mp4"><span class="nav-number">1.6.2.</span> <span class="nav-text">06-02 商品列表数据渲染实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-03-实现图片懒加载-mp4"><span class="nav-number">1.6.3.</span> <span class="nav-text">06-03 实现图片懒加载.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第07章-Node-js基础"><span class="nav-number">1.7.</span> <span class="nav-text">第07章 Node.js基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#07-01-Linux环境下配置Node环境-mp4"><span class="nav-number">1.7.1.</span> <span class="nav-text">07-01 Linux环境下配置Node环境.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-02-创建http-Server容器-mp4"><span class="nav-number">1.7.2.</span> <span class="nav-text">07-02 创建http Server容器.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-03-通过node加载静态页面-mp4"><span class="nav-number">1.7.3.</span> <span class="nav-text">07-03 通过node加载静态页面.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-04-搭建基于Express框架的运行环境-mp4"><span class="nav-number">1.7.4.</span> <span class="nav-text">07-04 搭建基于Express框架的运行环境.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第08章-MongoDB介绍"><span class="nav-number">1.8.</span> <span class="nav-text">第08章 MongoDB介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#08-01-window平台下MongoDB的安装和环境搭建-mp4"><span class="nav-number">1.8.1.</span> <span class="nav-text">08-01 window平台下MongoDB的安装和环境搭建.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-02-Linux平台下安装配置MongoDB-mp4"><span class="nav-number">1.8.2.</span> <span class="nav-text">08-02 Linux平台下安装配置MongoDB.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-03-给MongoDB创建用户-mp4"><span class="nav-number">1.8.3.</span> <span class="nav-text">08-03 给MongoDB创建用户.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-04-MongoDB基本语法-mp4"><span class="nav-number">1.8.4.</span> <span class="nav-text">08-04 MongoDB基本语法.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-05-表数据设计和插入-mp4"><span class="nav-number">1.8.5.</span> <span class="nav-text">08-05 表数据设计和插入.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第09章-基于Node-js开发商品列表接口"><span class="nav-number">1.9.</span> <span class="nav-text">第09章 基于Node.js开发商品列表接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#09-01-Node的启动和调试方式-mp4"><span class="nav-number">1.9.1.</span> <span class="nav-text">09-01 Node的启动和调试方式.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-02-基于Express实现商品列表查询接口-mp4"><span class="nav-number">1.9.2.</span> <span class="nav-text">09-02 基于Express实现商品列表查询接口.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-03-商品列表分页和排序功能实现-上-mp4"><span class="nav-number">1.9.3.</span> <span class="nav-text">09-03 商品列表分页和排序功能实现(上).mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-04-商品列表分页和排序功能实现（下）-mp4"><span class="nav-number">1.9.4.</span> <span class="nav-text">09-04 商品列表分页和排序功能实现（下）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-05-价格过滤功能实现-mp4"><span class="nav-number">1.9.5.</span> <span class="nav-text">09-05 价格过滤功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-06-加入购物车功能实现-mp4"><span class="nav-number">1.9.6.</span> <span class="nav-text">09-06 加入购物车功能实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第10章-登录模块实现"><span class="nav-number">1.10.</span> <span class="nav-text">第10章 登录模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-01-登录功能实现-mp4"><span class="nav-number">1.10.1.</span> <span class="nav-text">10-01 登录功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-02-登出功能实现-mp4"><span class="nav-number">1.10.2.</span> <span class="nav-text">10-02 登出功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-03-登录拦截-mp4"><span class="nav-number">1.10.3.</span> <span class="nav-text">10-03 登录拦截.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-04-全局模态框组件实现-mp4"><span class="nav-number">1.10.4.</span> <span class="nav-text">10-04 全局模态框组件实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第11章-购物车模块实现"><span class="nav-number">1.11.</span> <span class="nav-text">第11章 购物车模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-01-购物车列表功能实现-mp4"><span class="nav-number">1.11.1.</span> <span class="nav-text">11-01 购物车列表功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-02-商品删除功能实现-mp4"><span class="nav-number">1.11.2.</span> <span class="nav-text">11-02 商品删除功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-03-商品修改功能实现-mp4"><span class="nav-number">1.11.3.</span> <span class="nav-text">11-03 商品修改功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-04-购物车全选和商品实时计算功能实现-mp4"><span class="nav-number">1.11.4.</span> <span class="nav-text">11-04 购物车全选和商品实时计算功能实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第12章-地址模块实现"><span class="nav-number">1.12.</span> <span class="nav-text">第12章 地址模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-01-地址列表渲染实现-上-mp4"><span class="nav-number">1.12.1.</span> <span class="nav-text">12-01 地址列表渲染实现 (上).mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-02-地址列表渲染功能实现（下）-mp4"><span class="nav-number">1.12.2.</span> <span class="nav-text">12-02 地址列表渲染功能实现（下）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-03-地址列表切换和展开功能实现-mp4"><span class="nav-number">1.12.3.</span> <span class="nav-text">12-03 地址列表切换和展开功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-04-地址设置默认功能实现-mp4"><span class="nav-number">1.12.4.</span> <span class="nav-text">12-04 地址设置默认功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-05-地址删除功能实现-mp4"><span class="nav-number">1.12.5.</span> <span class="nav-text">12-05 地址删除功能实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第13章-订单确认模块实现"><span class="nav-number">1.13.</span> <span class="nav-text">第13章 订单确认模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-01-订单确认列表渲染功能实现-mp4"><span class="nav-number">1.13.1.</span> <span class="nav-text">13-01 订单确认列表渲染功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-02-创建订单功能实现-mp4"><span class="nav-number">1.13.2.</span> <span class="nav-text">13-02 创建订单功能实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第14章-订单成功模块实现"><span class="nav-number">1.14.</span> <span class="nav-text">第14章 订单成功模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-01-订单成功页面功能实现-mp4"><span class="nav-number">1.14.1.</span> <span class="nav-text">14-01 订单成功页面功能实现.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第15章-基于Vuex改造登录和购物车数量功能"><span class="nav-number">1.15.</span> <span class="nav-text">第15章 基于Vuex改造登录和购物车数量功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#15-01-Vuex基本介绍-mp4"><span class="nav-number">1.15.1.</span> <span class="nav-text">15-01 Vuex基本介绍.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-02-Vuex的语法讲解-mp4"><span class="nav-number">1.15.2.</span> <span class="nav-text">15-02 Vuex的语法讲解.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-03-通过Vuex实现登录和购物车数量（上）-mp4"><span class="nav-number">1.15.3.</span> <span class="nav-text">15-03 通过Vuex实现登录和购物车数量（上）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-04-通过Vuex实现登录和购物车数量（下）-mp4"><span class="nav-number">1.15.4.</span> <span class="nav-text">15-04 通过Vuex实现登录和购物车数量（下）.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第16章-Webpack使用"><span class="nav-number">1.16.</span> <span class="nav-text">第16章 Webpack使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#16-01-webpack基础介绍-mp4"><span class="nav-number">1.16.1.</span> <span class="nav-text">16-01 webpack基础介绍.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-02-插件静态部分实现-mp4"><span class="nav-number">1.16.2.</span> <span class="nav-text">16-02 插件静态部分实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-03-插件功能实现-mp4"><span class="nav-number">1.16.3.</span> <span class="nav-text">16-03 插件功能实现.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-04-webpack打包功能实现（上）-mp4"><span class="nav-number">1.16.4.</span> <span class="nav-text">16-04 webpack打包功能实现（上）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-05-webpack打包功能实现（下）-mp4"><span class="nav-number">1.16.5.</span> <span class="nav-text">16-05 webpack打包功能实现（下）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-06-npm插件发布-mp4"><span class="nav-number">1.16.6.</span> <span class="nav-text">16-06 npm插件发布.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-07-webpack多页面构建-上-mp4"><span class="nav-number">1.16.7.</span> <span class="nav-text">16-07 webpack多页面构建(上).mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-08-webpack多页面构建（下）-mp4"><span class="nav-number">1.16.8.</span> <span class="nav-text">16-08 webpack多页面构建（下）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-09-webpack多页面构建-第三方库-mp4"><span class="nav-number">1.16.9.</span> <span class="nav-text">16-09 webpack多页面构建-第三方库.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-10-webpack多页面构建-抽取公共模块-mp4"><span class="nav-number">1.16.10.</span> <span class="nav-text">16-10 webpack多页面构建-抽取公共模块.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第17章-线上部署"><span class="nav-number">1.17.</span> <span class="nav-text">第17章 线上部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#17-01-线上部署（上）-mp4"><span class="nav-number">1.17.1.</span> <span class="nav-text">17-01 线上部署（上）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-02-线上部署（中）-mp4"><span class="nav-number">1.17.2.</span> <span class="nav-text">17-02 线上部署（中）.mp4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-03-线上部署（下）-mp4"><span class="nav-number">1.17.3.</span> <span class="nav-text">17-03 线上部署（下）.mp4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第18章-课程总结"><span class="nav-number">1.18.</span> <span class="nav-text">第18章 课程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#18-01-课程总结-mp4"><span class="nav-number">1.18.1.</span> <span class="nav-text">18-01 课程总结.mp4</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alimi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
