@@ -32,8 +32,6 @@ vue是一套构建用户界面的 **渐进式框架** 。
 
 ![vue概况以及核心思想](深入理解vue-SPD前端构建思想/响应式系统的实例.png)
 
-# Vue的初步安装
-
 ## Vue-cli安装
 
 ```
@@ -121,5 +119,55 @@ var app6 = new Vue({
 ```
 # SPD项目中的实例
 
-## elementui的使用
-## 
+## 生命周期
+
+beforeCreate
+* 类型 *Function*
+* 详细
+在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+
+created
+* 类型：*Function*
+* 详细：在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。
+
+beforeMount
+* 类型 *Function*
+* 详细：在挂载开始之前被调用：相关的 render 函数首次被调用。
+
+该钩子在服务器端渲染期间不被调用。
+
+mounted
+* 类型: *Function*
+* 详细：
+el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
+
+注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：
+
+beforeUpdate
+* 类型: *Function*
+* 详细：
+数据更新时调用，发生在虚拟 DOM 打补丁之前。这里适合在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器。
+
+该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。
+
+updated
+* 类型：*Function*
+* 详细：
+由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+
+当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。
+
+注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated：
+
+```
+updated: function () {
+  this.$nextTick(function () {
+    // Code that will run only after the
+    // entire view has been re-rendered
+  })
+}
+```
+
+watch
+* 类型：{ [key: string]: string | Function | Object | Array }
+* 详细：一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue 实例将会在实例化时调用 $watch()，遍历 watch 对象的每一个属性。
