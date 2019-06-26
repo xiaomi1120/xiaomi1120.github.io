@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Web前端架构">
 <meta property="og:description" content="解决Hexo命令fs.SyncWriteStream问题   nodejs版本更新到8.0之后，运行hexo相关命令总会出现这么一行代码    (node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.    虽然不怎么影响大局，当对于强迫症来说简直是一个 噩梦    nodejs从8.0开始已经弃用了fs.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-26T02:19:22.755Z">
+<meta property="og:updated_time" content="2019-06-26T02:22:18.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Hexo命令fs.SyncWriteStream问题">
 <meta name="twitter:description" content="解决Hexo命令fs.SyncWriteStream问题   nodejs版本更新到8.0之后，运行hexo相关命令总会出现这么一行代码    (node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.    虽然不怎么影响大局，当对于强迫症来说简直是一个 噩梦    nodejs从8.0开始已经弃用了fs.">
@@ -306,6 +306,9 @@
 <p>   <code>nodejs</code>从<code>8.0</code>开始已经弃用了<code>fs.SyncWriteStream</code>方法，但是某些插件里面还是用到这个方法. 查看Hexo项目也有这一条<a href="https://github.com/hexojs/hexo/issues/2598" target="_blank" rel="noopener">issue</a>, 在<code>hexo</code>项目中其中有一个<code>hexo-fs</code>的插件调用了这个方法, 所以需要更新<code>hexo-fs</code>插件, 更新方法如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br></pre></td></tr></table></figure></p>
 <p>  当然还有一些插件:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br></pre></td></tr></table></figure></p>
 <p>  重新启动，问题得到了解决。</p>
+<blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>  <a href="https://yangbingdong.com/2017/build-blog-hexo-base/" target="_blank" rel="noopener">基于Hexo+Github+Coding搭建个人博客——基础篇(从菜鸟到放弃)</a></p>
+</blockquote>
 
       
     </div>
@@ -476,7 +479,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决Hexo命令fs-SyncWriteStream问题"><span class="nav-number">1.</span> <span class="nav-text">解决Hexo命令fs.SyncWriteStream问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决Hexo命令fs-SyncWriteStream问题"><span class="nav-number">1.</span> <span class="nav-text">解决Hexo命令fs.SyncWriteStream问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

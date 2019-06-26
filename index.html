@@ -309,6 +309,9 @@
 <p>   <code>nodejs</code>从<code>8.0</code>开始已经弃用了<code>fs.SyncWriteStream</code>方法，但是某些插件里面还是用到这个方法. 查看Hexo项目也有这一条<a href="https://github.com/hexojs/hexo/issues/2598" target="_blank" rel="noopener">issue</a>, 在<code>hexo</code>项目中其中有一个<code>hexo-fs</code>的插件调用了这个方法, 所以需要更新<code>hexo-fs</code>插件, 更新方法如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br></pre></td></tr></table></figure></p>
 <p>  当然还有一些插件:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br></pre></td></tr></table></figure></p>
 <p>  重新启动，问题得到了解决。</p>
+<blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>  <a href="https://yangbingdong.com/2017/build-blog-hexo-base/" target="_blank" rel="noopener">基于Hexo+Github+Coding搭建个人博客——基础篇(从菜鸟到放弃)</a></p>
+</blockquote>
 
           
         
@@ -1260,6 +1263,9 @@
 <li>会使用git</li>
 </ul>
 <h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h2><p>   Hexo是一个快速、简洁且高效的博客框架。Hexo使用 Markdown 解析文章，在几秒内，既可利用靓丽的主题生成静态网页。<a href="https://im.github.io/2017/06/05/hexo/" target="_blank" rel="noopener">Hexo中文文档</a></p>
+<blockquote>
+<p>参考：<br><a href="https://tangxiaomi.top/" target="_blank" rel="noopener">糖小米</a></p>
+</blockquote>
 
           
         
