@@ -232,6 +232,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alimi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Web前端架构">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/" itemprop="url">解决Hexo命令fs.SyncWriteStream问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T10:16:25+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="解决Hexo命令fs-SyncWriteStream问题"><a href="#解决Hexo命令fs-SyncWriteStream问题" class="headerlink" title="解决Hexo命令fs.SyncWriteStream问题"></a>解决Hexo命令fs.SyncWriteStream问题</h2><p>   <code>nodejs</code>版本更新到<code>8.0</code>之后，运行<code>hexo</code>相关命令总会出现这么一行代码</p>
+<p>   <code>(node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</code></p>
+<p>   虽然不怎么影响大局，当对于强迫症来说简直是一个 <strong>噩梦</strong></p>
+<p>   <code>nodejs</code>从<code>8.0</code>开始已经弃用了<code>fs.SyncWriteStream</code>方法，但是某些插件里面还是用到这个方法. 查看Hexo项目也有这一条<a href="https://github.com/hexojs/hexo/issues/2598" target="_blank" rel="noopener">issue</a>, 在<code>hexo</code>项目中其中有一个<code>hexo-fs</code>的插件调用了这个方法, 所以需要更新<code>hexo-fs</code>插件, 更新方法如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br></pre></td></tr></table></figure></p>
+<p>  当然还有一些插件:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br></pre></td></tr></table></figure></p>
+<p>  重新启动，问题得到了解决。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2019/06/19/深入理解vue-SPD前端构建思想/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -319,7 +444,7 @@
 <p>很多人初次上手Vue时，觉得很好用，原因就是这个．不过，Vue的核心定位并不是一个框架，设计上也没有完全遵循MVVM模式，可以看到在图中只有State和View两部分， Vue的核心功能强调的是状态到界面的映射，对于代码的结构组织并不重视， 所以单纯只使用其核心功能时，它并不是一个框架，而更像一个视图模板引擎，这也是为什么Vue开发者把其命名成读音类似于view的原因。</p>
 <p>上文提到，Vue的核心的功能，是一个视图模板引擎，但这不是说Vue就不能成为一个框架。如下图所示，这里包含了Vue的所有部件，在声明式渲染（视图模板引擎）的基础上，我们可以通过添加组件系统、客户端路由、大规模状态管理来构建一个完整的框架。更重要的是，这些功能相互独立，你可以在核心功能的基础上任意选用其他的部件，不一定要全部整合在一起。可以看到，所说的“渐进式”，其实就是Vue的使用方式，同时也体现了Vue的设计的理念．</p>
 <p><img src="/2019/06/19/深入理解vue-SPD前端构建思想/响应式系统的实例.png" alt="vue概况以及核心思想"></p>
-<h1 id="Vue的初步安装"><a href="#Vue的初步安装" class="headerlink" title="Vue的初步安装"></a>Vue的初步安装</h1><h2 id="Vue-cli安装"><a href="#Vue-cli安装" class="headerlink" title="Vue-cli安装"></a>Vue-cli安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vue-cli</span><br><span class="line">$ vue init webpack my-project</span><br><span class="line">$ cd my-project</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<h2 id="Vue-cli安装"><a href="#Vue-cli安装" class="headerlink" title="Vue-cli安装"></a>Vue-cli安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vue-cli</span><br><span class="line">$ vue init webpack my-project</span><br><span class="line">$ cd my-project</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
 <h1 id="探讨Vue的双向绑定原理以及实现"><a href="#探讨Vue的双向绑定原理以及实现" class="headerlink" title="探讨Vue的双向绑定原理以及实现"></a>探讨Vue的双向绑定原理以及实现</h1><p>Vue.js 的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进 DOM 的系统：</p>
 <h2 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello Vue!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -1134,7 +1259,7 @@
 <li>了解github</li>
 <li>会使用git</li>
 </ul>
-<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo?"></a>什么是Hexo?</h2><p>   Hexo是一个快速、简洁且高效的博客框架。Hexo使用 Markdown 解析文章，在几秒内，既可利用靓丽的主题生成静态网页。<a href="https://im.github.io/2017/06/05/hexo/" target="_blank" rel="noopener">Hexo中文文档</a></p>
+<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h2><p>   Hexo是一个快速、简洁且高效的博客框架。Hexo使用 Markdown 解析文章，在几秒内，既可利用靓丽的主题生成静态网页。<a href="https://im.github.io/2017/06/05/hexo/" target="_blank" rel="noopener">Hexo中文文档</a></p>
 
           
         
@@ -1216,7 +1341,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1238,7 +1363,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

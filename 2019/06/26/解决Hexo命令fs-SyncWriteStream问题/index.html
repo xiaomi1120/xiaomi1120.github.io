@@ -6,10 +6,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo,本地图片,hexo-asset-image," />
+  <meta name="keywords" content="Hexo,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="keywords" content="hexo,本地图片,hexo-asset-image">
+<meta name="description" content="解决Hexo命令fs.SyncWriteStream问题   nodejs版本更新到8.0之后，运行hexo相关命令总会出现这么一行代码    (node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.    虽然不怎么影响大局，当对于强迫症来说简直是一个 噩梦    nodejs从8.0开始已经弃用了fs.">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新建图片">
-<meta property="og:url" content="https://xiaomi1120.github.io/2018/09/18/新建图片/index.html">
+<meta property="og:title" content="解决Hexo命令fs.SyncWriteStream问题">
+<meta property="og:url" content="https://xiaomi1120.github.io/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/index.html">
 <meta property="og:site_name" content="Web前端架构">
+<meta property="og:description" content="解决Hexo命令fs.SyncWriteStream问题   nodejs版本更新到8.0之后，运行hexo相关命令总会出现这么一行代码    (node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.    虽然不怎么影响大局，当对于强迫症来说简直是一个 噩梦    nodejs从8.0开始已经弃用了fs.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://xiaomi1120.github.io/2018/09/18/新建图片/000.png">
-<meta property="og:updated_time" content="2018-09-19T07:18:51.795Z">
+<meta property="og:updated_time" content="2019-06-26T02:19:22.755Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新建图片">
-<meta name="twitter:image" content="https://xiaomi1120.github.io/2018/09/18/新建图片/000.png">
+<meta name="twitter:title" content="解决Hexo命令fs.SyncWriteStream问题">
+<meta name="twitter:description" content="解决Hexo命令fs.SyncWriteStream问题   nodejs版本更新到8.0之后，运行hexo相关命令总会出现这么一行代码    (node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.    虽然不怎么影响大局，当对于强迫症来说简直是一个 噩梦    nodejs从8.0开始已经弃用了fs.">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://xiaomi1120.github.io/2018/09/18/新建图片/"/>
+  <link rel="canonical" href="https://xiaomi1120.github.io/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/">
 
 
 
 
 
-  <title>新建图片 | Web前端架构</title>
+  <title>解决Hexo命令fs.SyncWriteStream问题 | Web前端架构</title>
   
 
 
@@ -137,7 +138,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -147,13 +148,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Web前端架构</span>
         <span class="logo-line-after"><i></i></span>
@@ -183,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -193,7 +194,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -227,20 +228,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2018/09/18/新建图片/">
+    <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alimi">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Web前端架构">
     </span>
 
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">新建图片</h1>
+          <h1 class="post-title" itemprop="name headline">解决Hexo命令fs.SyncWriteStream问题</h1>
         
 
         <div class="post-meta">
@@ -261,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-18T18:00:51+08:00">
-                2018-09-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T10:16:25+08:00">
+                2019-06-26
               </time>
             
 
@@ -299,7 +300,12 @@
       
 
       
-        <p><img src="/2018/09/18/新建图片/000.png" alt="000"></p>
+        <h2 id="解决Hexo命令fs-SyncWriteStream问题"><a href="#解决Hexo命令fs-SyncWriteStream问题" class="headerlink" title="解决Hexo命令fs.SyncWriteStream问题"></a>解决Hexo命令fs.SyncWriteStream问题</h2><p>   <code>nodejs</code>版本更新到<code>8.0</code>之后，运行<code>hexo</code>相关命令总会出现这么一行代码</p>
+<p>   <code>(node:538) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</code></p>
+<p>   虽然不怎么影响大局，当对于强迫症来说简直是一个 <strong>噩梦</strong></p>
+<p>   <code>nodejs</code>从<code>8.0</code>开始已经弃用了<code>fs.SyncWriteStream</code>方法，但是某些插件里面还是用到这个方法. 查看Hexo项目也有这一条<a href="https://github.com/hexojs/hexo/issues/2598" target="_blank" rel="noopener">issue</a>, 在<code>hexo</code>项目中其中有一个<code>hexo-fs</code>的插件调用了这个方法, 所以需要更新<code>hexo-fs</code>插件, 更新方法如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br></pre></td></tr></table></figure></p>
+<p>  当然还有一些插件:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br></pre></td></tr></table></figure></p>
+<p>  重新启动，问题得到了解决。</p>
 
       
     </div>
@@ -317,11 +323,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/本地图片/" rel="tag"># 本地图片</a>
-          
-            <a href="/tags/hexo-asset-image/" rel="tag"># hexo-asset-image</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
         </div>
       
@@ -334,8 +336,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/18/Vue2-0-Node-js-MongDB全栈打造商城系统/" rel="next" title="Vue2.0+Node.js+MongDB全栈打造商城系统">
-                <i class="fa fa-chevron-left"></i> Vue2.0+Node.js+MongDB全栈打造商城系统
+              <a href="/2019/06/19/深入理解vue-SPD前端构建思想/" rel="next" title="深入理解vue&SPD前端构建思想">
+                <i class="fa fa-chevron-left"></i> 深入理解vue&SPD前端构建思想
               </a>
             
           </div>
@@ -394,10 +396,19 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Alimi</p>
               <p class="site-description motion-element" itemprop="description">共享前端技术,记录生活空间</p>
@@ -410,7 +421,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -432,7 +443,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -456,6 +467,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决Hexo命令fs-SyncWriteStream问题"><span class="nav-number">1.</span> <span class="nav-text">解决Hexo命令fs.SyncWriteStream问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -469,7 +496,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
