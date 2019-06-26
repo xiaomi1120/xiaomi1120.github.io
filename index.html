@@ -232,6 +232,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2019/06/26/深入了解Vue组件的生命周期和组件的调用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alimi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Web前端架构">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/" itemprop="url">深入了解Vue组件的生命周期和组件的调用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T10:36:49+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="了解Vue组件的生命周期"><a href="#了解Vue组件的生命周期" class="headerlink" title="了解Vue组件的生命周期"></a>了解Vue组件的生命周期</h1><blockquote>
+<p>在使用 <code>Vue</code> 进行日常开发中，我们总有这样的需求，我就想在页面刚一加载出这个表格组件时就发送请求去后台拉取数据，亦或者我想在组件加载前显示个<code>loading</code>图，当组件加载出来就让这个<code>loading</code>图消失等等这样或那样的需求，要实现这些需求，最重要的一点就是我怎么知道这个组件什么时候加载，换句话说我该什么时候向后台发送请求，为了解决这种问题，组件的生命周期钩子函数就应运而生。</p>
+</blockquote>
+<h2 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h2><p><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/lifecycle.png" alt="生命周期图示"></p>
+<p>这是官方文档给出的一个组件从被创建出来到最后被销毁所要经历的一系列过程，所以这个过程也叫做一个组件的生命周期图。从图中我们可以看到，一个组件从被创建到最后被销毁，总共要经历以下8个过程：</p>
+<ol>
+<li>beforeCreate:组件创建之前</li>
+<li>created：组件创建完毕</li>
+<li>beforeMount：组件挂载之前</li>
+<li>mounted：组件挂载完毕</li>
+<li>beforeUpate：组件更新之前</li>
+<li>upated：组件更新完毕</li>
+<li>beforeDestoy：组件销毁之前</li>
+<li>destoyed：组件销毁完毕</li>
+</ol>
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Home"</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">"Vue生命周期"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//beforeCreate:组件创建之前</span></span><br><span class="line">  beforeCreate() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"beforeCreate创建组件之前状态==========="</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//组件创建完毕</span></span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"created 组件创建完毕状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件挂载之前</span></span><br><span class="line">  beforeMount() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"beforeMount 组件挂载之前状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件挂载完毕</span></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"mounted 组件挂载完毕状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件更新之前</span></span><br><span class="line">  beforeUpdate() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"beforeUpdate 组件更新之前状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件更新完毕</span></span><br><span class="line">  updated() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"updated 组件更新完毕状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件销毁之前</span></span><br><span class="line">  beforeDestroy() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"beforeDestroy 组件销毁之前状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件销毁完毕</span></span><br><span class="line">  destroyed() &#123;</span><br><span class="line">    <span class="built_in">console</span>.group(<span class="string">"destroyed 组件销毁完毕状态===============》"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el     : "</span> + <span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data   : "</span> + <span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message: "</span> + <span class="keyword">this</span>.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>运行上面的代码，我们控制台可以看出：<br><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/打印预览.png" alt="预览"></p>
+<h2 id="各个过程详解"><a href="#各个过程详解" class="headerlink" title="各个过程详解"></a>各个过程详解</h2><ul>
+<li>beforeCreate和created<br>针对组件创建之前和组件创建完毕这两个过程，我们从控制台打印的结果中可以看出：</li>
+</ul>
+<p>在组件创建之前beforeCreate:组件的el和data都未被创建。<br>在组件创建完毕后created:组件的数据data已经被创建好，但是el还处于未被创建状态。<br><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/created.png" alt="预览"></p>
+<ul>
+<li><p>beforeMount 和 mounted<br>针对组件挂载之前和组件挂载完毕这两个过程，我们从控制台打印的结果中可以看出：<br>在组件挂载之前beforeMount:组件的el就会被创建，但是值得注意的是：<br><span style="color:red;font-weight:bold">虽然数据data里的message早已经被创建好，但是它还未被应用到真是的DOM元素中</span><br><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/mounted.png" alt="预览"></p>
+</li>
+<li><p>beforeUpdate和updated<br>针对组件更新之前和组件更新完毕这两个过程，我们向控制台中输入以下一行代码：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$vm0.message=<span class="string">"测试Vue生命周期"</span></span><br></pre></td></tr></table></figure>
+<p>接着，我们看下控制台的样子：<br><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/updated.png" alt="预览"><br>从图中我们可以看到，当我们将data里的message值改变之后，会触发组件的beforeUpdate和update钩子函数。</p>
+<ul>
+<li>beforeDestroy和destroyed</li>
+</ul>
+<p>针对组件销毁之前和组件销毁完毕这两个过程，我们向控制台中输入以下一行代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$vm0.$destroy()</span><br></pre></td></tr></table></figure></p>
+<p>输入之后并回车，控制台发生了如下变化：<br><img src="/2019/06/26/深入了解Vue组件的生命周期和组件的调用/destory.png" alt="预览"></p>
+<p>到此之后，整个组件便走完了自己的一生，从创建到被销毁，销毁之后，此时该组件将不再受vue管理，组件上的所有事件监听都会被移除，所以指令都会被解绑。</p>
+<h1 id="组件的调用"><a href="#组件的调用" class="headerlink" title="组件的调用"></a>组件的调用</h1><h2 id="父组件绑定子组件"><a href="#父组件绑定子组件" class="headerlink" title="父组件绑定子组件"></a>父组件绑定子组件</h2><p>父组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">index-header</span>&gt;</span><span class="tag">&lt;/<span class="name">index-header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> IndexHeader <span class="keyword">from</span> <span class="string">"./components/header"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Index"</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    IndexHeader</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>子组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>子组件部分<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Indexheader"</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h2><p>父组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">index-header</span> <span class="attr">:message</span>=<span class="string">"message"</span>&gt;</span><span class="tag">&lt;/<span class="name">index-header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> IndexHeader <span class="keyword">from</span> <span class="string">"./components/header"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Index"</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    IndexHeader</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">"我是父组件"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>子组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>子组件部分<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Indexheader"</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    message: <span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h2><p>父组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">index-header</span> <span class="attr">:message</span>=<span class="string">"message"</span> <span class="attr">v-on:listenToChildEvent</span>=<span class="string">"showMsg"</span>&gt;</span><span class="tag">&lt;/<span class="name">index-header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> IndexHeader <span class="keyword">from</span> <span class="string">"./components/header"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Index"</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    IndexHeader</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">"我是父组件"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    showMsg(data) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>子组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>子组件部分<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"sendMsg"</span>&gt;</span>向父组件传值<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Indexheader"</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    message: <span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    sendMsg() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">"listenToChildEvent"</span>, <span class="string">"this.message id from child"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaomi1120.github.io/2019/06/26/解决Hexo命令fs-SyncWriteStream问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -682,7 +854,7 @@
 <ul>
 <li>Object.defineProperty()函数</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> id=<span class="string">"userName"</span>&gt;</span><br><span class="line"> &lt;span id=<span class="string">"userNameText"</span>&gt;&lt;/span&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   <span class="keyword">var</span> obj=&#123;</span><br><span class="line">     pwd:<span class="string">'123456'</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="built_in">Object</span>.defineProperty(obj,<span class="string">"username"</span>,&#123;</span><br><span class="line">     get:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     &#125;,</span><br><span class="line">     set:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userNameText'</span>).innerText=val;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userName'</span>).value=val;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="built_in">document</span>.getElementById(<span class="string">"userName"</span>).addEventListener(<span class="string">'keyup'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     obj.username=event.target.value</span><br><span class="line">   &#125;)</span><br><span class="line"> &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> id=<span class="string">"userName"</span>&gt;</span><br><span class="line"> &lt;span id=<span class="string">"userNameText"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   <span class="keyword">var</span> obj=&#123;</span><br><span class="line">     pwd:<span class="string">'123456'</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="built_in">Object</span>.defineProperty(obj,<span class="string">"username"</span>,&#123;</span><br><span class="line">     get:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     &#125;,</span><br><span class="line">     set:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userNameText'</span>).innerText=val;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">'userName'</span>).value=val;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="built_in">document</span>.getElementById(<span class="string">"userName"</span>).addEventListener(<span class="string">'keyup'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     obj.username=event.target.value</span><br><span class="line">   &#125;)</span><br><span class="line"> &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="01-04-vue框架优缺点对比"><a href="#01-04-vue框架优缺点对比" class="headerlink" title="01-04 vue框架优缺点对比"></a>01-04 vue框架优缺点对比</h4><p>前端：vue.js,axios,vuex,util,公共组件，vue-cli,webpack<br>后端：Node+Express的后端接口开发<br>数据库：MongoDB等数据库知识<br>Vue+Node部署到生产环境</p>
 <h2 id="第02章-Vue基础"><a href="#第02章-Vue基础" class="headerlink" title="第02章 Vue基础"></a>第02章 Vue基础</h2><h3 id="02-01-nodejs和npm的安装和环境搭建"><a href="#02-01-nodejs和npm的安装和环境搭建" class="headerlink" title="02-01 nodejs和npm的安装和环境搭建"></a>02-01 nodejs和npm的安装和环境搭建</h3><h3 id="02-02-vue环境搭建以及vue-cli使用"><a href="#02-02-vue环境搭建以及vue-cli使用" class="headerlink" title="02-02 vue环境搭建以及vue-cli使用"></a>02-02 vue环境搭建以及vue-cli使用</h3><p>Vue多页面应用文件引用</p>
 <ul>
@@ -1347,7 +1519,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
